@@ -10,14 +10,14 @@ def buildArtifact()
 
 }
 
-def deployTomcat(jobname,ipaddress,context)
+def deployTomcat(ipaddress,context)
 {
-    sh "scp /var/lib/jenkins/workspace/${jobname}/webapp/target/webapp.war ubuntu@${ipaddress}:/var/lib/tomcat10/webapps/${context}.war"
+    sh "scp /var/lib/jenkins/workspace/${JOB_NAME}/webapp/target/webapp.war ubuntu@${ipaddress}:/var/lib/tomcat10/webapps/${context}.war"
 }
 
-def runSelenium(jobname)
+def runSelenium()
 {
-     sh "java -jar /var/lib/jenkins/workspace/${jobname}/testing.jar"
+     sh "java -jar /var/lib/jenkins/workspace/${JOB_NAME}/testing.jar"
 }
 
 
